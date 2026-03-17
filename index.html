@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна</title>
+    <title>Головна - Мій Аніме Сайт</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <h1>Мій Аніме Сайт</h1>
         <nav>
+            <a href="index.html" class="logo">АнімеБаза</a>
             <ul>
-                <li><a href="index.html">Головна</a></li>
+                <li><a href="index.html" class="active">Головна</a></li>
                 <li><a href="catalog.html">Каталог</a></li>
                 <li><a href="community.html">Спільнота</a></li>
                 <li><a href="profile.html">Профіль</a></li>
@@ -20,24 +20,46 @@
     </header>
 
     <main>
-        <section id="slider">
-            <h2>Онгоїнги</h2>
-            <!-- Slider with ongoing anime -->
-        </section>
-
-        <section id="news">
-            <h2>Стрічка новин</h2>
-            <!-- News feed -->
-        </section>
-
         <section id="top-rated">
-            <h2>Топ рейтингу</h2>
-            <!-- Top rated anime -->
+            <h2>Топ Рейтингу</h2>
+            <div class="anime-grid">
+                <!-- Placeholder Card 1 -->
+                <div class="anime-card">
+                    <img src="https://via.placeholder.com/200x300.png?text=Anime+Poster" alt="Anime Title 1">
+                    <div class="anime-card-info">
+                        <h3>Атака Титанів</h3>
+                        <p>Шьонен, 2013</p>
+                    </div>
+                </div>
+                <!-- Placeholder Card 2 -->
+                <div class="anime-card">
+                    <img src="https://via.placeholder.com/200x300.png?text=Anime+Poster" alt="Anime Title 2">
+                    <div class="anime-card-info">
+                        <h3>Сталевий Алхімік</h3>
+                        <p>Шьонен, 2009</p>
+                    </div>
+                </div>
+                <!-- Placeholder Card 3 -->
+                <div class="anime-card">
+                    <img src="https://via.placeholder.com/200x300.png?text=Anime+Poster" alt="Anime Title 3">
+                    <div class="anime-card-info">
+                        <h3>Зошит Смерті</h3>
+                        <p>Сейнен, 2006</p>
+                    </div>
+                </div>
+                <!-- Placeholder Card 4 -->
+                <div class="anime-card">
+                    <img src="https://via.placeholder.com/200x300.png?text=Anime+Poster" alt="Anime Title 4">
+                    <div class="anime-card-info">
+                        <h3>Steins;Gate</h3>
+                        <p>Фантастика, 2011</p>
+                    </div>
+                </div>
+            </div>
         </section>
-
-        <section id="discussions">
-            <h2>Зараз обговорюють</h2>
-            <!-- Hot discussions -->
+         <section id="news">
+            <h2>Стрічка новин</h2>
+            <p>Тут будуть останні анонси та дати виходу нових серій.</p>
         </section>
     </main>
 
