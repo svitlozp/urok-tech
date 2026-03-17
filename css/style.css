@@ -32,12 +32,25 @@ header {
     box-sizing: border-box;
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -58,6 +71,37 @@ nav a:hover, nav a.active {
     color: #00E5FF; /* Cyan accent */
 }
 
+/* --- Auth Buttons --- */
+#auth-container {
+    display: flex;
+    align-items: center;
+}
+
+.google-login-btn {
+    background-color: #FFFFFF;
+    color: #444444;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.google-login-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.google-login-btn img {
+    width: 20px;
+    height: 20px;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     color: #FFFFFF;
@@ -76,7 +120,7 @@ footer {
     margin-top: 2rem;
 }
 
-/* Anime Cards ("Netflix" Style) */
+/* --- Anime Card (Unified Style) --- */
 .anime-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -89,41 +133,39 @@ footer {
     overflow: hidden;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
 .anime-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 229, 255, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2);
+}
+
+.anime-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .anime-card img {
     width: 100%;
-    height: auto;
+    height: 300px; /* Fixed height */
+    object-fit: cover; /* Cover the area, cropping if needed */
     display: block;
 }
 
 .anime-card-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-    color: #FFFFFF;
-    padding: 2rem 1rem 1rem 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.anime-card:hover .anime-card-info {
-    opacity: 1;
-    transform: translateY(0);
+    padding: 1rem;
 }
 
 .anime-card-info h3 {
     margin: 0 0 0.5rem 0;
     font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #FFFFFF;
 }
 
 .anime-card-info p {
@@ -132,20 +174,116 @@ footer {
     color: #B0B0B0;
 }
 
-
-/* Buttons */
-.btn {
-    display: inline-block;
-    background-color: #00E5FF; /* Cyan */
-    color: #121212;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
+/* --- Profile Page Specific Styles --- */
+#profile-page-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.btn:hover {
-    background-color: #FF4081; /* Neon Pink */
+#profile-sidebar {
+    background-color: #2A2A3E;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    position: sticky;
+    top: 120px; /* Adjust based on header height */
+}
+
+.profile-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #00E5FF;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.profile-details h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-details .join-date {
+    font-size: 0.9rem;
+    color: #B0B0B0;
+    margin-bottom: 1.5rem;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+}
+
+.profile-stats .stat {
+    text-align: center;
+}
+
+.profile-stats .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
     color: #FFFFFF;
+}
+
+.profile-stats .stat-label {
+    font-size: 0.8rem;
+    color: #B0B0B0;
+}
+
+.edit-profile-btn {
+    display: inline-block;
+    width: 100%;
+    background-color: #00E5FF;
+    color: #1A1A2E;
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn:hover {
+    background-color: #FF4081;
+    color: #FFFFFF;
+}
+
+#profile-content {
+    /* Styles for the right column content */
+}
+
+.tabs {
+    display: flex;
+    background-color: #2A2A3E;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 1.5rem;
+}
+
+.tab-button {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    color: #B0B0B0;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tab-button.active {
+    background-color: #00E5FF;
+    color: #1A1A2E;
+    font-weight: bold;
+}
+
+.list-content {
+    display: none;
+}
+
+.list-content.active {
+    display: block;
 }

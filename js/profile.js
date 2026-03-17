@@ -5,11 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // Deactivate all tabs and lists
             tabs.forEach(t => t.classList.remove('active'));
             lists.forEach(l => l.classList.remove('active'));
 
-            // Activate the clicked tab and corresponding list
             tab.classList.add('active');
             const listId = `${tab.dataset.list}-list`;
             document.getElementById(listId).classList.add('active');
@@ -17,10 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fetch and display anime for the 'Watching' list
-    const watchingGrid = document.getElementById('watching-list');
-    const animeIdsToFetch = [1, 21, 20]; // Example: One Piece, Death Note, Naruto
+    const watchingGrid = document.querySelector('#watching-list .anime-grid');
+    const animeIdsToFetch = [1, 21, 20, 9253, 1535]; // One Piece, Death Note, Naruto, Steins;Gate, Hunter x Hunter
 
-    // Create a fetch promise for each ID
     const fetchPromises = animeIdsToFetch.map(id =>
         fetch(`https://shikimori.one/api/animes/${id}`).then(res => res.json())
     );

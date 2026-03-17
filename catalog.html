@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог - Мій Аніме Сайт</title>
+    <title>Каталог - АнімеБаза</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -16,26 +16,25 @@
                 <li><a href="community.html">Спільнота</a></li>
                 <li><a href="profile.html">Профіль</a></li>
             </ul>
+            <div id="auth-container">
+                <button class="google-login-btn" id="google-login">
+                    <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                    Увійти через Google
+                </button>
+            </div>
         </nav>
     </header>
 
-    <main>
-         <aside id="filters">
-            <h2>Фільтри</h2>
-            <!-- Filters by genre, year, studio, etc. -->
-        </aside>
-        <section id="anime-list">
-            <h2>Весь Каталог</h2>
-            <div class="anime-grid">
-                <!-- More placeholder cards -->
-            </div>
-        </section>
+    <main id="catalog-page">
+        <h2>Каталог Аніме</h2>
+        <div id="catalog-grid" class="anime-grid">
+            <!-- Anime cards will be loaded here by JavaScript -->
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2024 Мій Аніме Сайт</p>
     </footer>
-
     <script src="js/catalog.js"></script>
 </body>
 </html>
