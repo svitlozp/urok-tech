@@ -3,13 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const animeId = urlParams.get('id');
 
     if (!animeId) {
-        document.getElementById('anime-name').textContent = 'Аніме не знайдено';
+        document.getElementById('anime-title').textContent = 'Аніме не знайдено';
         return;
     }
 
     fetch(`https://shikimori.one/api/animes/${animeId}`)
         .then(response => response.json())
         .then(anime => {
+            // Set document title
+            document.title = `${anime.name} - АнімеБаза`;
+
             // Banner and Poster
             const bannerUrl = anime.image.original ? `https://shikimori.one${anime.image.original}` : 'https://via.placeholder.com/1200x400.png?text=No+Banner';
             document.getElementById('banner-image').src = bannerUrl;
@@ -17,11 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('poster-image').alt = anime.name;
 
             // Header Info
-            document.getElementById('anime-name').textContent = anime.name;
-            document.getElementById('anime-score').textContent = anime.score;
-            document.getElementById('anime-studio').textContent = anime.studios[0] ? anime.studios[0].name : 'N/A';
-            document.getElementById('anime-episodes').textContent = anime.episodes || 'N/A';
-            document.getElementById('anime-status').textContent = anime.status.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            document.getElementById('anime-title').textContent = anime.name;
+            document.getElementById('anime-type-year').textContent = `${anime.kind.toUpperCase()}, ${anime.aired_on ? new Date(anime.aired_on).getFullYear() : 'N/A'}`;
+            document.getElementById('anime-episodes').textContent = `Епізоди: ${anime.episodes || '??'}`;
+            document.getElementById('anime-score').textContent = `⭐ ${anime.score}`;
 
             // Genres
             const genresContainer = document.getElementById('anime-genres');
@@ -34,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Description
-            const synopsis = anime.description ? anime.description.replace(/\r?\n/g, "<br>").replace(/\[spoiler.*?\]/g, "") : 'Опис відсутній.';
-            document.getElementById('anime-synopsis').innerHTML = synopsis;
+            const description = anime.description ? anime.description.replace(/\r?\n/g, "<br>").replace(/\[spoiler.*?\]/g, "").replace(/\[\/spoiler\]/g, "") : 'Опис відсутній.';
+            document.getElementById('anime-description-text').innerHTML = description;
 
             // Trailer
             const trailerContainer = document.getElementById('trailer-container');
@@ -48,6 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error fetching anime details:', error);
-            document.getElementById('anime-name').textContent = 'Помилка завантаження';
+            document.getElementById('anime-title').textContent = 'Помилка завантаження';
         });
 });
