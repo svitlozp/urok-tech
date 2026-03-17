@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мій Профіль - АнімеБаза</title>
+    <title>Профіль - АнімеБаза</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -19,67 +19,77 @@
             <div id="auth-container">
                 <button class="google-login-btn" id="google-login">
                     <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
-                    Увійти через Google
+                    <span>Увійти через Google</span>
                 </button>
             </div>
         </nav>
     </header>
 
-    <main id="profile-page">
+    <main>
         <div id="profile-page-grid">
-            <!-- Left Sidebar -->
+            <!-- Sidebar with Profile Info -->
             <aside id="profile-sidebar">
                 <div class="profile-avatar">
-                    <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar">
+                    <img src="https://via.placeholder.com/150" alt="User Avatar" id="user-avatar">
                 </div>
                 <div class="profile-details">
-                    <h1>User_Name</h1>
-                    <p class="join-date">Приєднався: Січень 2024</p>
-                    <div class="profile-stats">
-                        <div class="stat">
-                            <div class="stat-value">10</div>
-                            <div class="stat-label">У списку</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">120</div>
-                            <div class="stat-label">Годин</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">5</div>
-                            <div class="stat-label">Друзів</div>
-                        </div>
-                    </div>
-                    <button class="edit-profile-btn">Редагувати профіль</button>
+                    <h1 id="user-name">Username</h1>
+                    <p class="join-date" id="user-join-date">Приєднався: 2024</p>
                 </div>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="planned-count">0</div>
+                        <div class="stat-label">Планую</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="watching-count">0</div>
+                        <div class="stat-label">Дивлюся</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="completed-count">0</div>
+                        <div class="stat-label">Переглянуто</div>
+                    </div>
+                </div>
+                <button class="btn" id="edit-profile-btn">Редагувати профіль</button>
             </aside>
 
-            <!-- Right Content -->
-            <div id="profile-content">
+            <!-- Main Content with Anime Lists -->
+            <section id="profile-content">
                 <div class="tabs">
-                    <button class="tab-button active" data-list="watching">Дивлюся</button>
+                    <button class="tab-button active" data-list="planned">Планую</button>
+                    <button class="tab-button" data-list="watching">Дивлюся</button>
                     <button class="tab-button" data-list="completed">Переглянуто</button>
-                    <button class="tab-button" data-list="planned">Заплановано</button>
+                    <button class="tab-button" data-list="dropped">Кинуто</button>
                 </div>
 
-                <div id="watching-list" class="list-content active">
-                    <div class="anime-grid">
-                        <!-- Content will be dynamically loaded by JavaScript -->
-                        <p>Завантаження...</p>
+                <div id="planned-list" class="list-content active">
+                    <h2>Планую подивитися</h2>
+                    <div class="anime-grid" id="planned-grid">
+                        <!-- Anime cards will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <div id="watching-list" class="list-content">
+                    <h2>Зараз дивлюся</h2>
+                    <div class="anime-grid" id="watching-grid">
+                         <!-- Anime cards will be dynamically inserted here -->
                     </div>
                 </div>
 
                 <div id="completed-list" class="list-content">
-                     <div class="anime-grid">
-                        <p>Цей список поки порожній.</p>
+                    <h2>Переглянуті аніме</h2>
+                    <div class="anime-grid" id="completed-grid">
+                         <!-- Anime cards will be dynamically inserted here -->
                     </div>
                 </div>
-
-                <div id="planned-list" class="list-content">
-                    <div class="anime-grid">
-                        <p>Цей список поки порожній.</p>
+                
+                <div id="dropped-list" class="list-content">
+                    <h2>Кинуті аніме</h2>
+                    <div class="anime-grid" id="dropped-grid">
+                        <!-- Anime cards will be dynamically inserted here -->
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 

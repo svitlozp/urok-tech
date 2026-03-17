@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Деталі Аніме - АнімеБаза</title>
+    <title>Назва Аніме - АнімеБаза</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="anime-detail-page">
     <header>
         <nav>
             <a href="index.html" class="logo">АнімеБаза</a>
@@ -19,55 +19,44 @@
             <div id="auth-container">
                 <button class="google-login-btn" id="google-login">
                     <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
-                    Увійти через Google
+                    <span>Увійти через Google</span>
                 </button>
             </div>
         </nav>
     </header>
 
-    <main id="anime-detail-page">
-        <!-- Banner -->
-        <section id="anime-banner">
-            <img id="banner-image" src="" alt="Anime Banner">
-        </section>
-
-        <!-- Main Content -->
+    <main>
+        <section id="anime-banner"><img id="banner-image" src="" alt="Banner"></section>
+        
         <div id="anime-detail-content">
-            <!-- Header -->
-            <section id="anime-header">
+            <header id="anime-header">
                 <div id="anime-poster">
-                    <img id="poster-image" src="" alt="Anime Poster">
+                    <img id="poster-image" src="" alt="Poster">
                 </div>
                 <div id="anime-title-section">
-                    <h1 id="anime-name">Завантаження...</h1>
+                    <h1 id="anime-title">Завантаження...</h1>
                     <div id="anime-meta">
-                        <span class="score">Rating: <span id="anime-score">?</span></span>
-                        <span>Studio: <span id="anime-studio">?</span></span>
-                        <span>Episodes: <span id="anime-episodes">?</span></span>
-                        <span>Status: <span id="anime-status">?</span></span>
+                        <span id="anime-type-year"></span>
+                        <span id="anime-episodes"></span>
+                        <span class="score" id="anime-score"></span>
                     </div>
-                    <div id="anime-genres">
-                        <!-- Genres will be loaded by JS -->
-                    </div>
+                    <div id="anime-genres"></div>
                     <div id="anime-actions">
-                        <a href="#" class="btn">Додати до списку</a>
-                        <a href="#" class="btn btn-secondary">Написати відгук</a>
+                        <button class="btn" id="add-to-list-btn">Додати до списку</button>
+                        <button class="btn btn-secondary" id="write-review-btn">Написати відгук</button>
                     </div>
                 </div>
-            </section>
+            </header>
 
-            <!-- Body -->
             <section id="anime-body">
                 <div id="anime-description">
-                    <h2>Синопсис</h2>
-                    <p id="anime-synopsis">Завантаження...</p>
+                    <h2>Опис</h2>
+                    <p id="anime-description-text">Завантаження...</p>
                 </div>
-                <div id="anime-trailer">
+                <aside id="anime-trailer">
                     <h2>Трейлер</h2>
-                    <div id="trailer-container">
-                        <!-- YouTube player will be embedded here -->
-                    </div>
-                </div>
+                    <div id="trailer-container"></div>
+                </aside>
             </section>
         </div>
     </main>

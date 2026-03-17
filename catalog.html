@@ -27,8 +27,37 @@
 
     <main id="catalog-page">
         <h2>Каталог Аніме</h2>
+
+        <!-- Filter and Sort Controls -->
+        <section id="filter-controls">
+            <div class="filter-group">
+                <input type="search" id="search-input" placeholder="Пошук за назвою...">
+            </div>
+            <div class="filter-group">
+                <label for="genre-filter">Жанр:</label>
+                <select id="genre-filter"></select>
+            </div>
+            <div class="filter-group">
+                <label for="status-filter">Статус:</label>
+                <select id="status-filter">
+                    <option value="">Всі</option>
+                    <option value="anons">Анонс</option>
+                    <option value="ongoing">Онгоінг</option>
+                    <option value="released">Вийшло</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sort-filter">Сортувати за:</label>
+                <select id="sort-filter">
+                    <option value="ranked">Рейтингом</option>
+                    <option value="popularity">Популярністю</option>
+                    <option value="name">Назвою (A-Z)</option>
+                </select>
+            </div>
+        </section>
+
         <div id="catalog-grid" class="anime-grid">
-            <!-- Anime cards will be loaded here by JavaScript -->
+            <p>Завантаження...</p>
         </div>
     </main>
 
