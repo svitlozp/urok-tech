@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Деталі Аніме - Мій Аніме Сайт</title>
+    <title>Деталі Аніме - АнімеБаза</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,22 +12,69 @@
             <a href="index.html" class="logo">АнімеБаза</a>
             <ul>
                 <li><a href="index.html">Головна</a></li>
-                <li><a href="catalog.html" class="active">Каталог</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
                 <li><a href="community.html">Спільнота</a></li>
                 <li><a href="profile.html">Профіль</a></li>
             </ul>
+            <div id="auth-container">
+                <button class="google-login-btn" id="google-login">
+                    <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                    Увійти через Google
+                </button>
+            </div>
         </nav>
     </header>
 
-    <main id="anime-detail-content">
-        <!-- Content will be dynamically loaded by JavaScript -->
-        <p>Завантаження даних...</p>
+    <main id="anime-detail-page">
+        <!-- Banner -->
+        <section id="anime-banner">
+            <img id="banner-image" src="" alt="Anime Banner">
+        </section>
+
+        <!-- Main Content -->
+        <div id="anime-detail-content">
+            <!-- Header -->
+            <section id="anime-header">
+                <div id="anime-poster">
+                    <img id="poster-image" src="" alt="Anime Poster">
+                </div>
+                <div id="anime-title-section">
+                    <h1 id="anime-name">Завантаження...</h1>
+                    <div id="anime-meta">
+                        <span class="score">Rating: <span id="anime-score">?</span></span>
+                        <span>Studio: <span id="anime-studio">?</span></span>
+                        <span>Episodes: <span id="anime-episodes">?</span></span>
+                        <span>Status: <span id="anime-status">?</span></span>
+                    </div>
+                    <div id="anime-genres">
+                        <!-- Genres will be loaded by JS -->
+                    </div>
+                    <div id="anime-actions">
+                        <a href="#" class="btn">Додати до списку</a>
+                        <a href="#" class="btn btn-secondary">Написати відгук</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Body -->
+            <section id="anime-body">
+                <div id="anime-description">
+                    <h2>Синопсис</h2>
+                    <p id="anime-synopsis">Завантаження...</p>
+                </div>
+                <div id="anime-trailer">
+                    <h2>Трейлер</h2>
+                    <div id="trailer-container">
+                        <!-- YouTube player will be embedded here -->
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2024 Мій Аніме Сайт</p>
     </footer>
-
     <script src="js/anime-detail.js"></script>
 </body>
 </html>

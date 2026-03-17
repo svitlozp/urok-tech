@@ -1,50 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mainContent = document.getElementById('anime-detail-content');
-    const animeId = new URLSearchParams(window.location.search).get('id');
+    const urlParams = new URLSearchParams(window.location.search);
+    const animeId = urlParams.get('id');
 
     if (!animeId) {
-        mainContent.innerHTML = '<p style="color: #FF4081;">Помилка: ID аніме не знайдено. Будь ласка, поверніться до каталогу.</p>';
+        document.getElementById('anime-name').textContent = 'Аніме не знайдено';
         return;
     }
 
     fetch(`https://shikimori.one/api/animes/${animeId}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(anime => {
-            // Update the document title
-            document.title = `${anime.name} - Мій Аніме Сайт`;
+            // Banner and Poster
+            const bannerUrl = anime.image.original ? `https://shikimori.one${anime.image.original}` : 'https://via.placeholder.com/1200x400.png?text=No+Banner';
+            document.getElementById('banner-image').src = bannerUrl;
+            document.getElementById('poster-image').src = `https://shikimori.one${anime.image.original}`;
+            document.getElementById('poster-image').alt = anime.name;
 
-            const imageUrl = anime.image.original ? `https://shikimori.one${anime.image.original}` : 'https://via.placeholder.com/300x450.png?text=No+Image';
+            // Header Info
+            document.getElementById('anime-name').textContent = anime.name;
+            document.getElementById('anime-score').textContent = anime.score;
+            document.getElementById('anime-studio').textContent = anime.studios[0] ? anime.studios[0].name : 'N/A';
+            document.getElementById('anime-episodes').textContent = anime.episodes || 'N/A';
+            document.getElementById('anime-status').textContent = anime.status.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
-            mainContent.innerHTML = `
-                <section class="anime-detail-container">
-                    <div class="anime-detail-poster">
-                        <img src="${imageUrl}" alt="Poster for ${anime.name}">
-                    </div>
-                    <div class="anime-detail-info">
-                        <h1>${anime.name} / ${anime.russian}</h1>
-                        <p><strong>Тип:</strong> ${anime.kind.toUpperCase()}</p>
-                        <p><strong>Епізоди:</strong> ${anime.episodes || 'N/A'}</p>
-                        <p><strong>Статус:</strong> ${anime.status}</p>
-                        <p><strong>Рік:</strong> ${anime.aired_on ? new Date(anime.aired_on).getFullYear() : 'N/A'}</p>
-                        <p><strong>Рейтинг:</strong> ${anime.score} &#9733;</p>
-                        <div class="genres">
-                            ${anime.genres.map(g => `<span class="genre">${g.name}</span>`).join('')}
-                        </div>
-                        <p class="description">
-                            <strong>Опис:</strong><br>
-                            ${anime.description ? anime.description.replace(/\n/g, '<br>') : 'Опис відсутній.'}
-                        </p>
-                    </div>
-                </section>
-            `;
+            // Genres
+            const genresContainer = document.getElementById('anime-genres');
+            genresContainer.innerHTML = '';
+            anime.genres.forEach(genre => {
+                const genreTag = document.createElement('span');
+                genreTag.classList.add('genre-tag');
+                genreTag.textContent = genre.russian;
+                genresContainer.appendChild(genreTag);
+            });
+
+            // Description
+            const synopsis = anime.description ? anime.description.replace(/\r?\n/g, "<br>").replace(/\[spoiler.*?\]/g, "") : 'Опис відсутній.';
+            document.getElementById('anime-synopsis').innerHTML = synopsis;
+
+            // Trailer
+            const trailerContainer = document.getElementById('trailer-container');
+            if (anime.videos && anime.videos.length > 0) {
+                const trailer = anime.videos[0];
+                trailerContainer.innerHTML = `<iframe src="${trailer.player_url}" frameborder="0" allowfullscreen></iframe>`;
+            } else {
+                trailerContainer.innerHTML = '<p>Трейлер відсутній.</p>';
+            }
         })
         .catch(error => {
             console.error('Error fetching anime details:', error);
-            mainContent.innerHTML = '<p style="color: #FF4081;">Не вдалося завантажити детальну інформацію про аніме. Спробуйте оновити сторінку.</p>';
+            document.getElementById('anime-name').textContent = 'Помилка завантаження';
         });
 });

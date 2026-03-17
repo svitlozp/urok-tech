@@ -9,7 +9,7 @@
 */
 
 /* Typography */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&display=swap');
 
 /* Basic styles */
 body {
@@ -174,116 +174,176 @@ footer {
     color: #B0B0B0;
 }
 
-/* --- Profile Page Specific Styles --- */
-#profile-page-grid {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
+
+/* --- Anime Detail Page Specific Styles --- */
+#anime-detail-page {
+    padding: 0;
 }
 
-#profile-sidebar {
-    background-color: #2A2A3E;
-    padding: 2rem;
-    border-radius: 12px;
-    text-align: center;
-    position: sticky;
-    top: 120px; /* Adjust based on header height */
+#anime-banner {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
 }
 
-.profile-avatar img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #00E5FF;
+#anime-banner img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    filter: blur(8px) brightness(0.6);
+    transform: scale(1.1);
+}
+
+#anime-detail-content {
+    position: relative;
+    max-width: 1200px;
+    margin: -250px auto 0 auto;
+    padding: 2rem;
+}
+
+#anime-header {
+    display: grid;
+    grid-template-columns: 225px 1fr;
+    gap: 2rem;
+    align-items: flex-end;
+}
+
+#anime-poster img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+#anime-title-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+#anime-meta {
+    display: flex;
+    gap: 2rem;
+    font-size: 1rem;
+    color: #B0B0B0;
     margin-bottom: 1rem;
 }
 
-.profile-details h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+#anime-meta span {
+    font-weight: 500;
 }
 
-.profile-details .join-date {
-    font-size: 0.9rem;
-    color: #B0B0B0;
-    margin-bottom: 1.5rem;
+#anime-meta .score {
+    color: #00E5FF;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
-.profile-stats {
+#anime-genres {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-bottom: 1.5rem;
 }
 
-.profile-stats .stat {
-    text-align: center;
-}
-
-.profile-stats .stat-value {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #FFFFFF;
-}
-
-.profile-stats .stat-label {
+.genre-tag {
+    background-color: rgba(0, 229, 255, 0.1);
+    color: #00E5FF;
+    padding: 5px 10px;
+    border-radius: 5px;
     font-size: 0.8rem;
-    color: #B0B0B0;
+    font-weight: 500;
 }
 
-.edit-profile-btn {
-    display: inline-block;
-    width: 100%;
+#anime-actions .btn {
     background-color: #00E5FF;
     color: #1A1A2E;
-    padding: 12px 0;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-right: 1rem;
 }
 
-.edit-profile-btn:hover {
+#anime-actions .btn:hover {
     background-color: #FF4081;
     color: #FFFFFF;
 }
 
-#profile-content {
-    /* Styles for the right column content */
+#anime-body {
+    margin-top: 3rem;
+    background-color: rgba(26, 26, 46, 0.5);
+    padding: 2rem;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
 }
 
-.tabs {
-    display: flex;
-    background-color: #2A2A3E;
+#anime-description h2 {
+    margin-bottom: 1rem;
+}
+
+#anime-description p {
+    text-align: justify;
+}
+
+#anime-trailer iframe {
+    width: 100%;
+    height: 250px;
     border-radius: 8px;
-    padding: 5px;
+    border: none;
+}
+
+/* --- News Section on Main Page --- */
+#news-section {
+    margin-top: 3rem;
+}
+
+#news-section h2 {
+    font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
-.tab-button {
-    flex: 1;
-    background-color: transparent;
-    border: none;
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.news-card {
+    background-color: #2A2A3E;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
     color: #B0B0B0;
-    padding: 10px 15px;
-    border-radius: 6px;
-    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 64, 129, 0.2);
+}
+
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-card-content {
+    padding: 1rem;
+}
+
+.news-card-content h3 {
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.news-card-content p {
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+}
+
+.news-card-footer {
+    font-size: 0.8rem;
     font-weight: 500;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.tab-button.active {
-    background-color: #00E5FF;
-    color: #1A1A2E;
-    font-weight: bold;
-}
-
-.list-content {
-    display: none;
-}
-
-.list-content.active {
-    display: block;
+    color: #00E5FF;
 }
