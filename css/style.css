@@ -1,38 +1,151 @@
+/*
+    Color Palette (Dark Mode Base)
+    - Main Background: #1A1A2E (Deep Dark Blue)
+    - Accent Color: #00E5FF (Cyan) for links and active elements
+    - Hover/Secondary Accent: #FF4081 (Neon Pink)
+    - Text: #B0B0B0 (Light Gray)
+    - Headings: #FFFFFF (White)
+    - Glassmorphism Panel: rgba(26, 26, 46, 0.8) with backdrop-filter
+*/
+
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap');
+
 /* Basic styles */
 body {
-    font-family: sans-serif;
+    background-color: #1A1A2E;
+    color: #B0B0B0;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
+    line-height: 1.6;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
+    background-color: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav li {
-    display: inline-block;
-    margin-right: 1rem;
+    margin: 0 1.5rem;
 }
 
 nav a {
-    color: #fff;
+    color: #FFFFFF;
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    color: #00E5FF; /* Cyan accent */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFFFFF;
+    margin-top: 0;
 }
 
 main {
-    padding: 1rem;
+    padding: 2rem;
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
+    background-color: #121212;
+    color: #B0B0B0;
+    padding: 1.5rem;
     text-align: center;
+    margin-top: 2rem;
+}
+
+/* Anime Cards ("Netflix" Style) */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.anime-card {
+    background-color: #2A2A3E;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.anime-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 229, 255, 0.15);
+}
+
+.anime-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.anime-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    color: #FFFFFF;
+    padding: 2rem 1rem 1rem 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.anime-card:hover .anime-card-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.anime-card-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.anime-card-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #B0B0B0;
+}
+
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: #00E5FF; /* Cyan */
+    color: #121212;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #FF4081; /* Neon Pink */
+    color: #FFFFFF;
 }
