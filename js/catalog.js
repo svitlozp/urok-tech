@@ -14,11 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const imageUrl = anime.image.original ? `https://shikimori.one${anime.image.original}` : 'https://via.placeholder.com/200x300.png?text=No+Image';
                     
                     animeCard.innerHTML = `
-                        <img src="${imageUrl}" alt="${anime.name}">
-                        <div class="anime-card-info">
-                            <h3>${anime.name}</h3>
-                            <p>${anime.kind.toUpperCase()}, ${anime.aired_on ? new Date(anime.aired_on).getFullYear() : 'N/A'}</p>
-                        </div>
+                        <a href="anime-detail.html?id=${anime.id}">
+                            <img src="${imageUrl}" alt="${anime.name}">
+                            <div class="anime-card-info">
+                                <h3>${anime.name}</h3>
+                                <p>${anime.kind.toUpperCase()}, ${anime.aired_on ? new Date(anime.aired_on).getFullYear() : 'N/A'}</p>
+                            </div>
+                        </a>
                     `;
                     animeGrid.appendChild(animeCard);
                 });
