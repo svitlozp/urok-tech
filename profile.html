@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профіль - Мій Аніме Сайт</title>
+    <title>Мій Профіль - АнімеБаза</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -19,15 +19,37 @@
         </nav>
     </header>
 
-    <main>
-        <section id="user-lists">
-            <h2>Мої списки</h2>
-            <p>Тут будуть списки аніме користувача.</p>
+    <main id="profile-page">
+        <section id="user-info">
+            <div class="user-avatar">
+                <img src="https://via.placeholder.com/150" alt="Avatar">
+            </div>
+            <div class="user-details">
+                <h1>Ім'я Користувача</h1>
+                <p>Дата реєстрації: 01.01.2024</p>
+                <div class="user-stats">
+                    <span><strong>10</strong> аніме в списку</span>
+                    <span><strong>5</strong> друзів</span>
+                </div>
+            </div>
         </section>
 
-        <section id="user-stats">
-            <h2>Статистика</h2>
-            <p>Тут буде статистика переглядів.</p>
+        <section id="user-lists">
+            <div class="tabs">
+                <button class="tab-button active" data-list="watching">Дивлюся</button>
+                <button class="tab-button" data-list="completed">Переглянуто</button>
+                <button class="tab-button" data-list="planned">Заплановано</button>
+            </div>
+            <div id="watching-list" class="anime-grid list-content active">
+                <!-- Anime cards will be loaded here by JavaScript -->
+                <p>Завантаження...</p>
+            </div>
+            <div id="completed-list" class="anime-grid list-content">
+                <p>Цей список поки порожній.</p>
+            </div>
+            <div id="planned-list" class="anime-grid list-content">
+                <p>Цей список поки порожній.</p>
+            </div>
         </section>
 
         <section id="user-achievements">
@@ -39,5 +61,6 @@
     <footer>
         <p>&copy; 2024 Мій Аніме Сайт</p>
     </footer>
+    <script src="js/profile.js"></script>
 </body>
 </html>
